@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block app_context %}
+<div class="row">
+    <div class="col-md-12">
+        <h1> {{ title }} </h1>
+        <p>
+            <a href=" {{ url_for('index') }} ">Return to the home page</a>
+        </p>
+    </div>  
+</div>
+{% endblock %}

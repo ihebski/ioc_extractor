@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_context %} <div class="row">
+    <div class="col-md-12"></div>
+    <div class="row">
+      <div class="col-md-6">
+        {{ wtf.quick_form(form,form_type="inline") }}
+        {{ form.csrf }}
+      </div>
+    </div>
+    <br>
+    <div class="progress" id="loadingGif" style="display:none">
+      <div class="progress-bar progress-bar-striped active " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> processing, please wait... </div>
+    </div>
+    <hr>
+    <div> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} <div class="alert alert-{{ messages.0.0 }} alert-dismissible" role="alert"> {% for category, message in messages %} <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{ message }}</strong>
+        </br> {% endfor %}
+      </div> {% endif %} {% endwith %} </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped" id="example">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Report</th>
+              <th>Hash</th>
+              <th>Analyzed on</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody> {% for file in files %} <tr>
+              <td>{{loop.index}}</td>
+              <td>
+                <a href="{{url_for('details',hash=file.hash)}}">{{ file.filename }}</a>
+              </td>
+              <td>{{ file.hash }}</td>
+              <td>{{ file.uploaded_on }}</td>
+              <td>
+                <a href="{{url_for('delete',id=file.id)}}" class="btn btn-info btn-sm">Delete</a>
+              </td>
+            </tr> {% endfor %} </tbody>
+        </table>
+      </div>
+    </div>
+
+        <script>
+      document.getElementById('submit').onclick = function() {
+        document.getElementById('loadingGif').style.display = "block";
+      }
+    </script> 
+    
+    {% endblock %}
