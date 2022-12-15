@@ -6,7 +6,7 @@
   <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/anime-eye-abilities-featured-image.jpg" heigh="150px"/>
 </p>
 
-**IOC extractor is a mini web application to parse CTI PDF report and extract possible IOC's per page, This will reduce the work and effort realized by CTI analyst to go through long documents.**
+**IOC extractor is a mini web application to parse CTI PDF reports and extract possible IOC's per page. This will reduce the work and effort realized by CTI analysts to go through long documents.**
 
 
 - [x] Project in progress
@@ -27,6 +27,8 @@ Future Notes:
 - Match extracted IOC's with threats
 - Add dashboard
 - UI enhancement
+
+### Usage
 
 * Script only
 ```
